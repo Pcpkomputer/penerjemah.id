@@ -41,7 +41,7 @@
                           
                           
                           <div v-for="(val,i) in this.baruditambahkan" v-bind:key="i" style="display:flex;flex-direction:row;margin-bottom:5px">
-                            <div style="background-color: #f2f2f2;border: 1px solid #969696;height:80px;width:90px;padding:5px"><img style="width:100%;height:100%" :src="`https://penerjemah.web.id/assets/avatar/${val.avatar}`"></div>
+                            <div style="background-color: #f2f2f2;border: 1px solid #969696;height:80px;width:90px;padding:5px"><img style="width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/avatar/${val.avatar}`"></div>
                             <div style=";width:100%;padding-left:10px;padding-right:10px;">
                                  <div style="font-size:14px"><nuxt-link class="underline" style="color:blue" :to="`/detail/permintaan/${val.id}`">{{val.judul}}</nuxt-link></div>
                                  <div>Promotor : <nuxt-link class="underline" :to="`detail/user/${val.user}`">{{val.user}}</nuxt-link></div>
@@ -66,7 +66,7 @@
                           
 
                           <div v-for="(val,i) in this.ratingtertinggi" v-bind:key="i" style="display:flex;flex-direction:row;margin-bottom:5px">
-                            <div style="background-color: #f2f2f2;border: 1px solid #969696;height:80px;width:90px;padding:5px"><img style="width:100%;height:100%" :src="`https://penerjemah.web.id/assets/avatar/${val.avatar}`"></div>
+                            <div style="background-color: #f2f2f2;border: 1px solid #969696;height:80px;width:90px;padding:5px"><img style="width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/avatar/${val.avatar}`"></div>
                             <div style=";width:100%;padding-left:10px;padding-right:10px;">
                                  <div style="font-size:14px"><nuxt-link :to="`/detail/user/${val.username}`" class="underline" style="color:blue">{{val.username}}</nuxt-link></div>
                                  <div style="margin-bottom:5px" v-html="ratingHandler(val.rating)"></div>
@@ -90,7 +90,7 @@
                        <div style="padding-top:12px;padding-bottom:10px;">
 
                                                     <div v-for="(val,i) in this.aktivitas" v-bind:key="i" style="display:flex;flex-direction:row;margin-bottom:5px">
-                            <div style="background-color: #f2f2f2;border: 1px solid #969696;height:80px;width:90px;padding:5px"><img style="width:100%;height:100%" :src="`https://penerjemah.web.id/assets/avatar/${val.avatar}`"></div>
+                            <div style="background-color: #f2f2f2;border: 1px solid #969696;height:80px;width:90px;padding:5px"><img style="width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/avatar/${val.avatar}`"></div>
                             <div style=";width:100%;padding-left:10px;padding-right:10px;">
                                  <div style="font-size:14px"><nuxt-link style="color:blue" class="underline" :to="`/detail/user/${val.username}`">{{val.username}}</nuxt-link>: <span v-html="decodeURI(val.deskripsi)"></span></div>
                             </div>
@@ -128,7 +128,7 @@ export default {
   asyncData() {
     return axios({
       method: "POST",
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       data: `params={"aksi":"loaddatadashboard"}`,
       headers: { "content-type": "application/x-www-form-urlencoded" }
     }).then(res => {

@@ -96,7 +96,7 @@ export default {
     }
     return axios({
       method: "POST",
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       data: `params={"aksi":"loaddatacaptcha"}`,
       headers: { "content-type": "application/x-www-form-urlencoded" }
     }).then(res => {
@@ -140,7 +140,7 @@ export default {
     usernameHandler: function(e) {
       let username = encodeURI(this.value.username);
       axios({
-        url: "https://penerjemah.web.id/api/global.php",
+        url: "http://localhost/penerjemah.id/server/api/global.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"cekusername","id":"${username}"}`
@@ -171,7 +171,7 @@ export default {
 
         axios({
           method: "POST",
-          url: "https://penerjemah.web.id/api/global.php",
+          url: "http://localhost/penerjemah.id/server/api/global.php",
           data: `params={"aksi":"cekcaptcha","id":"${
             this.currentCaptcha.id_captcha
           }","value":"${this.value.captcha}"}`,
@@ -181,7 +181,7 @@ export default {
           if (v.status) {
             axios({
               method: "POST",
-              url: "https://penerjemah.web.id/api/logic.php",
+              url: "http://localhost/penerjemah.id/server/api/logic.php",
               data: `params=${JSON.stringify({
                 aksi: "proseslogin",
                 username: this.value.username,

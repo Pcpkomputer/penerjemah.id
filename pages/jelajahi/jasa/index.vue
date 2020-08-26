@@ -279,7 +279,7 @@ export default {
   asyncData(context) {
     if (context.route.query.kategori) {
       return axios({
-        url: "https://penerjemah.web.id/api/global_.php",
+        url: "http://localhost/penerjemah.id/server/api/global_.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"memuatkontenjasa-withcategory","limit":"25","offset":"0","kategori":"${
@@ -287,7 +287,7 @@ export default {
         }"}`
       }).then(res1 => {
         return axios({
-          url: "https://penerjemah.web.id/api/global_.php",
+          url: "http://localhost/penerjemah.id/server/api/global_.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params={"aksi":"memuattotalkontenjasa-withcategory","kategori":"${
@@ -326,13 +326,13 @@ export default {
     }
 
     return axios({
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
       data: `params={"aksi":"memuatkontenjasa","limit":"${limit}","offset":"${offset}"}`
     }).then(res1 => {
       return axios({
-        url: "https://penerjemah.web.id/api/global.php",
+        url: "http://localhost/penerjemah.id/server/api/global.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"memuattotalkontenjasa"}`

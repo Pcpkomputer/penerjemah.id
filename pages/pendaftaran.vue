@@ -172,7 +172,7 @@ export default {
     }
     return axios({
       method: "POST",
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       data: `params={"aksi":"loaddatacaptcha"}`,
       headers: { "content-type": "application/x-www-form-urlencoded" }
     }).then(res => {
@@ -260,7 +260,7 @@ export default {
           })
         );
         axios
-          .post("https://penerjemah.web.id/api/global.php", data, {
+          .post("http://localhost/penerjemah.id/server/api/global.php", data, {
             headers: {
               "Content-Type": `multipart/form-data; boundary=${data._boundary}`
             }
@@ -285,7 +285,7 @@ export default {
 
         axios({
           method: "POST",
-          url: "https://penerjemah.web.id/api/global.php",
+          url: "http://localhost/penerjemah.id/server/api/global.php",
           data: `params={"aksi":"cekcaptcha","id":"${
             this.currentCaptcha.id_captcha
           }","value":"${this.value.captcha}"}`,

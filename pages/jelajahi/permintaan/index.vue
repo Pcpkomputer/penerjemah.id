@@ -74,7 +74,7 @@
                                   </div>
                                   <div style="padding:5px;display:flex;flex-direction:row;margin-top:5px;border-bottom:solid 1px;padding-bottom:20px">
                                       <div style="display:flex;flex-direction:column">
-                                        <div style="border:solid 1px;width:100px;height:105px;border-radius:5px"><img style="width:100%;height:100%" :src="`https://penerjemah.web.id/assets/avatar/${val.user.avatar}`"></div>
+                                        <div style="border:solid 1px;width:100px;height:105px;border-radius:5px"><img style="width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/avatar/${val.user.avatar}`"></div>
                                         <div style="padding:5px;cursor:pointer" v-on:click="()=>{$router.push({path:`/detail/user/${val.user.username}`})}">{{val.user.username}}</div>
                                         <div v-html="ratingHandler(val.user.rating)" style="display:flex;flex-direction:row;padding:5px;padding-top:0px;">
                                           
@@ -400,7 +400,7 @@ export default {
         e.target.disabled = false;
       } else {
         axios({
-          url: "https://penerjemah.web.id/api/insert.php",
+          url: "http://localhost/penerjemah.id/server/api/insert.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params=${JSON.stringify({
@@ -464,7 +464,7 @@ export default {
         }
 
         axios({
-          url: "https://penerjemah.web.id/api/insert.php",
+          url: "http://localhost/penerjemah.id/server/api/insert.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params=${JSON.stringify({
@@ -601,7 +601,7 @@ export default {
   asyncData(context) {
     if (context.route.query.kategori) {
       return axios({
-        url: "https://penerjemah.web.id/api/global_.php",
+        url: "http://localhost/penerjemah.id/server/api/global_.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"memuatkontenpermintaan-withcategory","limit":"25","offset":"0","kategori":"${
@@ -609,7 +609,7 @@ export default {
         }"}`
       }).then(res => {
         return axios({
-          url: "https://penerjemah.web.id/api/global_.php",
+          url: "http://localhost/penerjemah.id/server/api/global_.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params={"aksi":"memuattotalkontenpermintaan-withcategory","kategori":"${
@@ -647,13 +647,13 @@ export default {
     }
 
     return axios({
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
       data: `params={"aksi":"memuatkontenpermintaan","limit":"${limit}","offset":"${offset}"}`
     }).then(res1 => {
       return axios({
-        url: "https://penerjemah.web.id/api/global.php",
+        url: "http://localhost/penerjemah.id/server/api/global.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"memuattotalkontenpermintaan"}`

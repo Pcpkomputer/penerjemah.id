@@ -14,12 +14,12 @@
                 <div style="width:100%;padding:10px;">
                     <div style="margin-bottom:5px">Support Payment Channels :</div>
                     <div style="display:flex;flex-wrap:wrap">
-                          <div style="padding:2px"><img style="width:45px;height:20px" src="https://ponimu-public.s3-ap-southeast-1.amazonaws.com/1532493169459"></div>
-                          <div style="padding:2px"><img style="width:65px;height:20px" src="https://ponimu-public.s3-ap-southeast-1.amazonaws.com/1532493185464"></div>
-                          <div style="padding:2px"><img style="width:50px;height:20px" src="https://ponimu-public.s3-ap-southeast-1.amazonaws.com/1532493200966"></div>
+                          <div style="padding:2px"><img style="width:53px;height:25px" src="https://1.bp.blogspot.com/-xH6tt4-O4z0/Xg89UCxU6RI/AAAAAAAAAAc/7aDUdshNmgwsOjGxwGizQH1iZoaqULlNACEwYBhgL/s1600/logobca-highres-bluliner-master-2011.jpg"></div>
+                          <div style="padding:2px"><img style="width:51px;height:25px" src="https://radarindo.co.id/wp-content/uploads/2020/05/WhatsApp-Image-2020-05-02-at-18.58.04-1280x720.jpeg"></div>
+                          <div style="padding:2px"><img style="width:50px;height:25px" src="https://cdn2.tstatic.net/makassar/foto/bank/images/permata-bank-5.jpg"></div>
                     </div>
                      <div style="display:flex">
-                          <div style="padding:2px"><img style="width:65px;height:20px" src="https://ponimu-public.s3-ap-southeast-1.amazonaws.com/1533629010603"></div>
+                          <div style="padding:2px"><img style="width:53px;height:25px" src="https://statik.tempo.co/data/2018/02/06/id_682386/682386_720.jpg"></div>
                          
                     </div>
                 </div>

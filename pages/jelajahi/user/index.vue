@@ -57,7 +57,7 @@
                               </div>
                               <div style="display:flex">
 
-                                  <div style="width:200px;height:150px;border:solid 1px"><img :src="`https://penerjemah.web.id/assets/avatar/${val.avatar}`" style="width:100%;height:100%"></div>
+                                  <div style="width:200px;height:150px;border:solid 1px"><img :src="`http://localhost/penerjemah.id/server/assets/avatar/${val.avatar}`" style="width:100%;height:100%"></div>
                                   <div style="margin-left:20px;width:100%">
                                        <div style="font-size:23px" class="underlined" v-on:click="detailHandler(val.user)">{{val.user}}</div>
                                        <div style="margin-bottom:3px">Reputasi User :</div>
@@ -103,7 +103,7 @@ export default {
   asyncData(context) {
     if (context.route.query.kategori) {
       return axios({
-        url: "https://penerjemah.web.id/api/global_.php",
+        url: "http://localhost/penerjemah.id/server/api/global_.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"memuatkontenuser-withcategory","limit":"25","offset":"0","kategori":"${
@@ -111,7 +111,7 @@ export default {
         }"}`
       }).then(res1 => {
         return axios({
-          url: "https://penerjemah.web.id/api/global_.php",
+          url: "http://localhost/penerjemah.id/server/api/global_.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params={"aksi":"memuattotaluser-withcategory","kategori":"${
@@ -148,13 +148,13 @@ export default {
     }
 
     return axios({
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
       data: `params={"aksi":"memuatkontenuser","limit":"${limit}","offset":"${offset}"}`
     }).then(res1 => {
       return axios({
-        url: "https://penerjemah.web.id/api/global.php",
+        url: "http://localhost/penerjemah.id/server/api/global.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params={"aksi":"memuattotaluser"}`

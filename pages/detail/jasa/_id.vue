@@ -68,7 +68,7 @@
 
                                         <div style="margin-bottom:15px;display:flex;flex-direction:row;justify-content:space-around;margin-top:25px">
                                            <div style="width:100px;height:70px;border:1px solid">
-                                              <img style="width:100%;height:100%" :src="`https://penerjemah.web.id/assets/avatar/${this.data.user.avatar}`">
+                                              <img style="width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/avatar/${this.data.user.avatar}`">
                                            </div>
                                            <div style="margin-left:15px;width:100%;display:flex;flex-direction:column">
                                               <div>{{this.data.user.username}}</div>
@@ -91,7 +91,7 @@
                                                     <div v-if="this.komentar.length===0" class="mt-2" style="height:150px;display:flex;justify-content:center;align-items: center;">Tidak ada komentar...</div>
                                                     <div style="margin-bottom:30px" if="this.komentar.length>0">
                                                         <div v-for="(val,i) in this.komentar" :key="i" style="display:flex;flex-direction:row;border-bottom:solid 1px;padding-bottom:24px;padding-top:20px">
-                                                          <img :src="`https://penerjemah.web.id/assets/avatar/${val.gambar}`" style="width:70px;height:70px;border:solid 1px">
+                                                          <img :src="`http://localhost/penerjemah.id/server/assets/avatar/${val.gambar}`" style="width:70px;height:70px;border:solid 1px">
                                                           <div style="flex-direction:column">
                                                             <div style="margin-left:10px"><nuxt-link to="/">{{val.username}}</nuxt-link></div>
                                                             <div style="margin-left:10px">{{val.komentar}}</div>
@@ -131,14 +131,14 @@ export default {
   asyncData(context) {
     return axios({
       method: "POST",
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       data: `params={"aksi":"memuatkomentarjasa","id":"${context.params.id}"}`
     })
       .then(res => {
         return axios({
           method: "POST",
-          url: "https://penerjemah.web.id/api/global.php",
+          url: "http://localhost/penerjemah.id/server/api/global.php",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           data: `params={"aksi":"memuatkontenjasa","id":"${context.params.id}"}`
         }).then(res1 => {
@@ -191,7 +191,7 @@ export default {
       if (komentar.length > 0) {
         e.target.disabled = true;
         axios({
-          url: "https://penerjemah.web.id/api/insert.php",
+          url: "http://localhost/penerjemah.id/server/api/insert.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params=${JSON.stringify({
@@ -224,7 +224,7 @@ export default {
     },
     hapusHandler: function() {
       axios({
-        url: "https://penerjemah.web.id/api/delete.php",
+        url: "http://localhost/penerjemah.id/server/api/delete.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({
@@ -259,7 +259,7 @@ export default {
       }
 
       axios({
-        url: "https://penerjemah.web.id/api/update.php",
+        url: "http://localhost/penerjemah.id/server/api/update.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({

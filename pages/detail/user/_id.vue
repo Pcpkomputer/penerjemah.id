@@ -54,7 +54,7 @@
 
                                                 <div :style="`margin-top:${(this.$store.state.login.username!==this.$route.params.id)?`15px`:`15px`}`">
                                                     <div style="width:100%;height:200px;border:solid 1px">
-                                                        <img style="height:100%;width:100%;object-fit:contain" :src="`https://penerjemah.web.id/assets/avatar/${this.data.user.avatar}`">
+                                                        <img style="height:100%;width:100%;object-fit:contain" :src="`http://localhost/penerjemah.id/server/assets/avatar/${this.data.user.avatar}`">
                                                     </div>
                                                 </div>
 
@@ -166,7 +166,7 @@
                         
                                     <div style="display:flex;flex-direction:row;flex-wrap:wrap">
                                         <div v-for="(val,i) in this.portofolio" v-bind:key="i" style="display:flex;flex-direction:column;margin-right:15px;margin-bottom:15px">
-                                            <div style="width:130px;height:130px;border:solid 1px"><img style="object-fit:contain;width:100%;height:100%" :src="`https://penerjemah.web.id/assets/portofolio/${val.gambar}`"></div>
+                                            <div style="width:130px;height:130px;border:solid 1px"><img style="object-fit:contain;width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/portofolio/${val.gambar}`"></div>
                                             <div style="margin-top:10px;word-wrap:wrap;width:130px">{{val.keterangan}}</div>
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@
                                         </div>
                                         
                                         <div style="background-color:white;border:solid 1px;width:100%;padding:5px;">{{val.deskripsi}}</div>
-                                        <div style="margin-top:8px;display:flex"><div>Attachment :</div><div v-on:click="berpindah(`https://penerjemah.web.id/assets/handwork/${val.file}`)" style="color:blue;text-decoration:underline;cursor:pointer;">{{val.file}}</div></div>
+                                        <div style="margin-top:8px;display:flex"><div>Attachment :</div><div v-on:click="berpindah(`http://localhost/penerjemah.id/server/assets/handwork/${val.file}`)" style="color:blue;text-decoration:underline;cursor:pointer;">{{val.file}}</div></div>
                                         <div v-show="val.status===`in progress`" style="margin-top:8px"><input v-on:change="fileHandlerTransact($event)" id="filekerjaan" type="file"></div>
                                         <div v-show="val.status===`in progress`" style="display:flex;margin-top:7px"><button class="tmblBiru fadeEffect" v-on:click="kirimKerjaan($event,i,val.id)" style="padding:5px">Kirim</button></div>
                                     </div>
@@ -231,13 +231,13 @@ export default {
   async asyncData(context) {
     return axios({
       method: "POST",
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       data: `params={"aksi":"memuatdetailuser","id":"${context.params.id}"}`,
       headers: { "content-type": "application/x-www-form-urlencoded" }
     }).then(res1 => {
       return axios({
         method: "POST",
-        url: "https://penerjemah.web.id/api/global.php",
+        url: "http://localhost/penerjemah.id/server/api/global.php",
         data: `params={"aksi":"memuatdetailuser-permintaan","id":"${
           context.params.id
         }"}`,
@@ -245,7 +245,7 @@ export default {
       }).then(res2 => {
         return axios({
           method: "POST",
-          url: "https://penerjemah.web.id/api/global.php",
+          url: "http://localhost/penerjemah.id/server/api/global.php",
           data: `params={"aksi":"memuatdetailuser-jasa","id":"${
             context.params.id
           }"}`,
@@ -253,7 +253,7 @@ export default {
         }).then(res3 => {
           return axios({
             method: "POST",
-            url: "https://penerjemah.web.id/api/global.php",
+            url: "http://localhost/penerjemah.id/server/api/global.php",
             data: `params={"aksi":"loaddataportofolio","id":"${
               context.params.id
             }"}`,
@@ -280,7 +280,7 @@ export default {
         let idkategori = el.value;
         e.target.disabled = true;
         axios({
-          url: "https://penerjemah.web.id/api/transaction.php",
+          url: "http://localhost/penerjemah.id/server/api/transaction.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params=${JSON.stringify({
@@ -308,7 +308,7 @@ export default {
         e.target.disabled = true;
         axios({
           method: "POST",
-          url: "https://penerjemah.web.id/api/global.php",
+          url: "http://localhost/penerjemah.id/server/api/global.php",
           data: `params=${JSON.stringify({
             aksi: "loadJudulPermintaan",
             credentials: this.$store.state.login
@@ -324,7 +324,7 @@ export default {
     clickAttachment: function(idpermintaan, e) {
       e.target.disabled = true;
       axios({
-        url: "https://penerjemah.web.id/api/transaction.php",
+        url: "http://localhost/penerjemah.id/server/api/transaction.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({
@@ -342,7 +342,7 @@ export default {
             )
           ) {
             axios({
-              url: "https://penerjemah.web.id/api/transaction.php",
+              url: "http://localhost/penerjemah.id/server/api/transaction.php",
               method: "POST",
               headers: { "content-type": "application/x-www-form-urlencoded" },
               data: `params=${JSON.stringify({
@@ -366,7 +366,9 @@ export default {
           if (res.data.status === "success") {
             e.target.disabled = false;
             window.open(
-              `https://penerjemah.web.id/assets/locked/${res.data.link}`,
+              `http://localhost/penerjemah.id/server/assets/locked/${
+                res.data.link
+              }`,
               "_blank"
             );
           }
@@ -389,11 +391,15 @@ export default {
         );
 
         axios
-          .post("https://penerjemah.web.id/api/transaction.php", fd, {
-            headers: {
-              "Content-Type": `multipart/form-data; boundary=${fd._boundary}`
+          .post(
+            "http://localhost/penerjemah.id/server/api/transaction.php",
+            fd,
+            {
+              headers: {
+                "Content-Type": `multipart/form-data; boundary=${fd._boundary}`
+              }
             }
-          })
+          )
           .then(res => {
             console.log(res);
             if (res.data.status === "success") {
@@ -464,7 +470,7 @@ export default {
         );
 
         axios
-          .post("https://penerjemah.web.id/api/insert.php", fdata, {
+          .post("http://localhost/penerjemah.id/server/api/insert.php", fdata, {
             headers: {
               "Content-Type": `multipart/form-data; boundary=${fdata._boundary}`
             }
@@ -515,7 +521,7 @@ export default {
       //alert(deskripsi);
 
       axios({
-        url: "https://penerjemah.web.id/api/update.php",
+        url: "http://localhost/penerjemah.id/server/api/update.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({
@@ -601,7 +607,7 @@ export default {
       this.$route.params.id === this.$store.state.login.username
     ) {
       axios({
-        url: "https://penerjemah.web.id/api/transaction.php",
+        url: "http://localhost/penerjemah.id/server/api/transaction.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({
@@ -613,7 +619,7 @@ export default {
       });
 
       axios({
-        url: "https://penerjemah.web.id/api/transaction.php",
+        url: "http://localhost/penerjemah.id/server/api/transaction.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({

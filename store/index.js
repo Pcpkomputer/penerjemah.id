@@ -41,7 +41,7 @@ const createStore = () => {
                         let parse = JSON.parse(p);
                         axios({
                             method: "POST",
-                            url: "https://penerjemah.web.id/api/logic.php",
+                            url: "http://localhost/penerjemah.id/server/api/logic.php",
                             headers: { "content-type": "application/x-www-form-urlencoded" },
                             data: `params=${JSON.stringify({
                                 aksi: "checkcredentials",

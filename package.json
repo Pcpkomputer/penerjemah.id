@@ -5,11 +5,11 @@
   "author": "yuuuudha",
   "private": true,
   "scripts": {
-  "dev": "nuxt",
-  "build": "nuxt build",
-  "start": "nuxt start",
-  "heroku-postbuild": "npm run build"
-},
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "heroku-postbuild": "npm run build"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",

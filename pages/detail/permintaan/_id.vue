@@ -54,7 +54,7 @@
                                                 <div class="col-lg-6 col-md-6" style="margin-bottom:15px">
                                                     <div style="font-size:20px;border-bottom:solid 1px;padding-bottom:7px;">Pemilik Permintaan</div>
                                                     <div style="display:flex;flex-direction:row">
-                                                        <div style="margin-top:15px;height:100px;width:130px;border-radius:5px;border:solid 1px"><img style="padding:4px;border-radius:15px;width:100%;height:100%" :src="`https://penerjemah.web.id/assets/avatar/${this.data.user.avatar}`"></div>
+                                                        <div style="margin-top:15px;height:100px;width:130px;border-radius:5px;border:solid 1px"><img style="padding:4px;border-radius:15px;width:100%;height:100%" :src="`http://localhost/penerjemah.id/server/assets/avatar/${this.data.user.avatar}`"></div>
                                                         <div style="width:100%;padding-top:15px;padding-left:30px">
                                                                 <div v-on:click="moveHandler(`/detail/user/${data.user.username}`)" style="margin-bottom:5px;cursor:pointer">{{this.data.user.username}}</div>
                                                                 <div style="display:flex;flex-direction:row;padding-top:0px;margin-bottom:5px" v-html="ratingHandler(this.data.user.rating)">
@@ -85,7 +85,7 @@
 
                                                     <div v-if="Object.keys(pekerjaterpilih).length>0">
                                                         <div style="display:flex;flex-direction:row">
-                                                        <div style="margin-top:15px;height:100px;width:130px;border-radius:5px;border:solid 1px"><img style="padding:4px;border-radius:15px;width:100%;height:100%" v-bind:src="`https://penerjemah.web.id/assets/avatar/${this.pekerjaterpilih.gambar}`"></div>
+                                                        <div style="margin-top:15px;height:100px;width:130px;border-radius:5px;border:solid 1px"><img style="padding:4px;border-radius:15px;width:100%;height:100%" v-bind:src="`http://localhost/penerjemah.id/server/assets/avatar/${this.pekerjaterpilih.gambar}`"></div>
                                                         <div style="width:100%;padding-top:15px;padding-left:30px">
                                                                 <div v-on:click="moveHandler(`/detail/user/${pekerjaterpilih.username}`)" style="margin-bottom:5px;cursor:pointer">{{this.pekerjaterpilih.username}}</div>
                                                                 <div style="display:flex;flex-direction:row;padding-top:0px;margin-bottom:5px" v-html="ratingHandler(this.pekerjaterpilih.rating)">
@@ -107,7 +107,7 @@
                                              </div>
                                              <div v-if="penaruh.length>0 && Object.keys(pekerjaterpilih).length===0" class="row" style="padding-top:15px">
                                                 <div style="margin-bottom:5px;padding-left:15px;padding-right:5px;padding-bottom:12px" v-for="(item,index) in this.penaruh" v-bind:key="index">
-                                                    <div style="height:100px;width:95px;border-radius:5px;border:solid 1px"><img style="padding:4px;border-radius:15px;width:100%;height:100%" v-bind:src="`https://penerjemah.web.id/assets/avatar/${item.gambar}`"></div>
+                                                    <div style="height:100px;width:95px;border-radius:5px;border:solid 1px"><img style="padding:4px;border-radius:15px;width:100%;height:100%" v-bind:src="`http://localhost/penerjemah.id/server/assets/avatar/${item.gambar}`"></div>
                                                     <div v-on:click="moveHandler(`/detail/user/${item.username}`)" style="padding-top:5px;cursor:pointer">{{item.username}}</div>
                                                      <div style="margin-top:3px;" v-html="ratingHandler(item.rating)">
                                                                 
@@ -199,7 +199,7 @@ export default {
         alert("Login terlebih dahulu!");
       } else {
         axios({
-          url: "https://penerjemah.web.id/api/insert.php",
+          url: "http://localhost/penerjemah.id/server/api/insert.php",
           method: "POST",
           headers: { "content-type": "application/x-www-form-urlencoded" },
           data: `params=${JSON.stringify({
@@ -258,7 +258,7 @@ export default {
         );
 
         axios
-          .post("https://penerjemah.web.id/api/insert.php", fd, {
+          .post("http://localhost/penerjemah.id/server/api/insert.php", fd, {
             headers: {
               "Content-Type": `multipart/form-data; boundary=${fd._boundary}`
             }
@@ -308,7 +308,7 @@ export default {
       }
 
       axios({
-        url: "https://penerjemah.web.id/api/update.php",
+        url: "http://localhost/penerjemah.id/server/api/update.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({
@@ -334,7 +334,7 @@ export default {
     },
     btnHapus: function() {
       axios({
-        url: "https://penerjemah.web.id/api/delete.php",
+        url: "http://localhost/penerjemah.id/server/api/delete.php",
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: `params=${JSON.stringify({
@@ -435,7 +435,7 @@ export default {
   async asyncData(context) {
     return axios({
       method: "POST",
-      url: "https://penerjemah.web.id/api/global.php",
+      url: "http://localhost/penerjemah.id/server/api/global.php",
       headers: { "content-type": `application/x-www-form-urlencoded` },
       data: `params={"aksi":"memuatpekerjaterpilihpermintaan","id":"${
         context.params.id
@@ -443,13 +443,13 @@ export default {
     }).then(res1 => {
       return axios({
         method: "POST",
-        url: "https://penerjemah.web.id/api/global.php",
+        url: "http://localhost/penerjemah.id/server/api/global.php",
         headers: { "content-type": `application/x-www-form-urlencoded` },
         data: `params={"aksi":"mencarijumlahuser"}`
       }).then(res2 => {
         return axios({
           method: "POST",
-          url: "https://penerjemah.web.id/api/global.php",
+          url: "http://localhost/penerjemah.id/server/api/global.php",
           headers: { "content-type": `application/x-www-form-urlencoded` },
           data: `params={"aksi":"memuatpenaruhpermintaan","id":"${
             context.params.id
@@ -457,7 +457,7 @@ export default {
         }).then(res3 => {
           return axios({
             method: "POST",
-            url: "https://penerjemah.web.id/api/global.php",
+            url: "http://localhost/penerjemah.id/server/api/global.php",
             headers: { "content-type": `application/x-www-form-urlencoded` },
             data: `params={"aksi":"memuatkontenpermintaan","id":"${
               context.params.id
